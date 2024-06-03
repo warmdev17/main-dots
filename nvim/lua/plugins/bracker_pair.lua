@@ -1,0 +1,3 @@
+return {
+  "fedepujol/bracketpair.nvim",
+}
