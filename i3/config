@@ -1,80 +1,62 @@
+# color set
+set $rosewater #f5e0dc
+set $flamingo #f2cdcd
+set $pink #f5c2e7
+set $mauve #cba6f7
+set $red #f38ba8
+set $maroon #eba0ac
+set $peach #fab387
+set $yellow #f9e2af
+set $green #a6e3a1
+set $teal #94e2d5
+set $sky #89dceb
+set $sapphire #74c7ec
+set $blue #89b4fa
+set $lavender #b4befe
+set $text #cdd6f4
+set $subtext1 #bac2de
+set $subtext0 #a6adc8
+set $overlay2 #9399b2
+set $overlay1 #7f849c
+set $overlay0 #6c7086
+set $surface2 #585b70
+set $surface1 #45475a
+set $surface0 #313244
+set $base #1e1e2e
+set $mantle #181825
+set $crust #11111b
+
+# import file
+include ~/.config/i3/keybinding.conf
+include ~/.config/i3/autostart.conf
+
+# main mod
 set $mod Mod4
 set $alt Mod1
 
-bindsym F8 exec --no-startup-id maim "/home/$USER/Pictures/$(date).png"
-# bindsym $mod+Home exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).png"
-# bindsym $mod+Delete exec --no-startup-id maim --select "/home/$USER/Pictures/$(date).png"
-bindsym $alt+space exec rofi -show drun --replace -i
-## Clipboard Screenshots
-# bindsym $mod+Delete exec ~/dotfiles/hypr/scripts/screenshot.sh
-
-## Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
-
-## Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-
 # gaps
 gaps inner 10
-gaps outer 2
+gaps outer 1
 
-workspace 1 output HDMI-1
-workspace 2 output HDMI-1
+# window border
+for_window [class="^.*"] border pixel 2
+
+# font 
 font pango:JetBrainsMono NF 12
-exec_always --no-startup-id /usr/bin/setxkbmap -option ctrl:nocaps
-# exec xrandr --output eDP-1 --off --output HDMI-1 --auto
-exec xrandr --output eDP-1 --auto
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec --no-startup-id ~/.config/polybar/polybar-i3.sh
-# exec_always --no-startup-id feh --bg-scale --zoom fill ~/wallpaper/mountain_view.jpg
-exec_always --no-startup-id nitrogen --restore
-exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
-default_border pixel 0
-default_floating_border pixel 0
+# set workspace output
+workspace 1 output eDP-1
+workspace 2 output eDP-1
+workspace 3 output eDP-1
+workspace 4 output eDP-1
+workspace 5 output eDP-1
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+workspace 10 output eDP-1
 
-# bind to toogle Screen 
-bindsym $alt+Shift+m exec xrandr --output eDP-1 --off --output HDMI-1 --auto  
-bindsym $alt+Shift+n exec xrandr --output eDP-1 --auto --output HDMI-1 --off
-
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym $mod+s exec fsearch
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym XF86MonBrightnessUp exec brightnessctl -q s +10%
-bindsym XF86MonBrightnessDown exec brightnessctl -q s 10%-
-bindsym $mod+Shift+u exec systemctl poweroff 
-floating_modifier $mod
-tiling_drag modifier titlebar
-bindsym $mod+Return exec kitty 
-bindsym $mod+q kill
-bindsym $mod+b exec google-chrome-stable
-bindsym $mod+e exec thunar
-# bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-bindsym $mod+a split h
-bindsym $mod+d split v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+p layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+z layout toggle split
-bindsym $mod+t floating toggle
-bindsym $mod+n focus mode_toggle
+# set workspace name
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -85,69 +67,16 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-bindsym $mod+Shift+1 move container to workspace 1;workspace 1;focus
-bindsym $mod+Shift+2 move container to workspace 2;workspace 2;focus
-bindsym $mod+Shift+3 move container to workspace 3;workspace 3;focus
-bindsym $mod+Shift+4 move container to workspace 4;workspace 4;focus
-bindsym $mod+Shift+5 move container to workspace 5;workspace 5;focus
-bindsym $mod+Shift+6 move container to workspace 6;workspace 6;focus
-bindsym $mod+Shift+7 move container to workspace 7;workspace 7;focus
-bindsym $mod+Shift+8 move container to workspace 8;workspace 8;focus
-bindsym $mod+Shift+9 move container to workspace 9;workspace 9;focus
-bindsym $mod+Shift+0 move container to workspace 10;workspace 10;focus
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-mode "resize" {
-        bindsym h resize shrink width 20 px or 20 ppt
-        bindsym j resize grow height 20 px or 20 ppt
-        bindsym k resize shrink height 20 px or 20 ppt
-        bindsym l resize grow width 20 px or 20 ppt
+# i3 color
+# target                 title     bg    text      indicator    border
+client.focused           $mantle   $mauve $mantle  $rosewater $mauve
+client.focused_inactive  $overlay0 $base  $text    $rosewater $overlay0 
+client.unfocused         $overlay0 $base  $text    $rosewater $overlay0 
+client.urgent            $peach    $base  $peach   $overlay0  $peach
+client.placeholder       $overlay0 $base  $text    $overlay0  $overlay0 
+client.background        $base
 
-        bindsym $alt+h resize shrink width 40 px or 40 ppt
-        bindsym $alt+j resize grow height 40 px or 40 ppt
-        bindsym $alt+k resize shrink height 40 px or 40 ppt
-        bindsym $alt+l resize grow width 40 px or 40 ppt
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-
-        # enter move mode
-        bindsym $mod+m mode "move"
-}
-
-bindsym $mod+r mode "resize"
-
-mode "move" {
-    bindsym $mod+Tab focus right
-
-    bindsym h move left 20
-    bindsym j move down 20
-    bindsym k move up 20
-    bindsym l move right 20
-
-    bindsym $alt+h move left 40
-    bindsym $alt+j move down 40
-    bindsym $alt+k move up 40
-    bindsym $alt+l move right 40
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    # enter resize mode
-    bindsym $mod+r mode "resize"
-}
-
-bindsym $mod+m mode "move"
+floating_modifier $mod
+set $refresh_i3status killall -SIGUSR1 i3status
+tiling_drag modifier titlebar
