@@ -5,6 +5,7 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
     },
     keys = {
+      { "<leader>/", false },
       {
         "<leader>fP",
         function()

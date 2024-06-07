@@ -51,6 +51,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    optional = true,
     opts = {
       options = {
         theme = "catppuccin",
@@ -62,12 +63,6 @@ return {
         },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
-      --       local default_sep_icons = {
-      --   default = { left = "", right = "" },
-      --   round = { left = "", right = "" },
-      --   block = { left = "█", right = "█" },
-      --   arrow = { left = "", right = "" },
-      -- }
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
