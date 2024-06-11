@@ -28,6 +28,7 @@ PACMAN_PACKAGES=(
 	fd
 	eza
 	ttf-jetbrains-mono-nerd
+	nitrogen
 	# Add other pacman packages here
 )
 
