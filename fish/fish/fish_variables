@@ -1,9 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR EDITOR:vim
-SETUVAR --export HOMEBREW_NO_ENV_HINTS:1
-SETUVAR --export HOMEBREW_NO_INSTALL_CLEANUP:1
-SETUVAR SHELL:fish
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
@@ -33,4 +30,3 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/usr/local/gcc\x2d13\x2e3\x2e0\x2d1/bin\x1e/usr/local/gcc\x2d13\x2e2\x2e1/bin

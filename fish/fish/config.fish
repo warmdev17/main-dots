@@ -4,39 +4,35 @@ end
 
 set fish_greeting
 set -U EDITOR vim
-set -U SHELL fish
-set -gx PATH /home/linuxbrew/.linuxbrew/bin $PATH
-set -Ux HOMEBREW_NO_INSTALL_CLEANUP 1
-set -Ux HOMEBREW_NO_ENV_HINTS 1
-set -gx GTK_IM_MODULE ibus
-set -gx QT_IM_MODULE ibus
-set -gx XMODIFIERS @im=ibus
-set -gx GLFW_IM_MODULE ibus
-
-oh-my-posh init fish --config ~/catppuccin_mocha.omp.json | source
 zoxide init fish | source
-nerdfetch
-# cat ~/.cache/wal/sequences
+oh-my-posh init fish --config ~/warmdev.omp.json | source
+#cat ~/.cache/wal/sequences
 
 
 # alias
-alias vim='nvim'
-alias v='nvim'
 alias npr='npm run dev'
 alias pacman='sudo pacman'
+alias v='nvim'
+alias vim='nvim'
 alias reload='exec fish'
 alias dev='cd ~/Workspace/'
 alias home='cd ~'
-
+alias home='cd ~'
+alias confk='vim ~/.config/kitty/kitty.conf'
+alias conff='vim ~/.config/fish/config.fish'
+alias confn='vim ~/.config/nvim'
 alias rm='rm -rf'
+alias browser='~/dotfiles/.settings/browser.sh'
 
 alias ls='eza -a --icons'
 alias ll='eza -al --icons'
 alias lt='eza -a --tree --level=1 --icons'
 
 alias shutdown='systemctl poweroff'
+alias cls='clear'
 
 alias nc='cd ~/.config/nvim'
+alias dotfiles='cd ~/clone/dotfiles/'
 
 # tmux quick sessions open
 function ta
@@ -51,8 +47,16 @@ function tl
     tmux ls
 end
 
-function tk
-    tmux kill-session -t $argv
+function hypr
+    cd ~/dotfiles/hypr/conf/
+end
+
+function .settings
+    cd ~/dotfiles/.settings/
+end
+
+function keybindings
+    vim ~/dotfiles/hypr/conf/keybindings/warmdev-keybinding.conf
 end
 
 # git alias
@@ -66,6 +70,9 @@ alias gsp="git stash
         git pull"
 alias gcheck="git checkout"
 alias gcredential="git config credential.helper store"
+function grt
+    git remote add origin "https://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@github.com/$argv[1]/$argv[2]"
+end
 
 # wifi connect alias
 alias wifi_list='nmcli device wifi list'
@@ -109,11 +116,6 @@ function buildwl
     g++ -o $argv[1] $argv[2] -l$argv[3] -l$argv[4] -l$argv[5]
 end
 
-function buildwlar
-    g++ -o $argv[1] $argv[2] -l$argv[3] -l$argv[4] -l$argv[5]
-    ./$argv[1]
-end
-
 function tfe
     if test -e "$argv"
         # The file exists, so do something here
@@ -124,9 +126,22 @@ function tfe
     end
 end
 
-function yt-dl
-    yt-dlp -f bestaudio --extract-audio --audio-format mp3 "$argv[1]"
+set -gx GTK_IM_MODULE ibus
+set -gx XMODIFIERS @im=ibus
+set -gx QT_IM_MODULE ibus
+
+if not test (pidof ibus-daemon)
+    ibus-daemon -drx
 end
+
+# chrome quick open
+function chrome
+    google-chrome-stable $argv[1] https://$argv[2]
+end
+alias youtube='google-chrome-stable https://youtube.com'
+alias facebook='google-chrome-stable https://facebook.com'
+alias github='google-chrome-stable https://github.com'
+alias reddit='google-chrome-stable https://reddit.com'
 
 function cd..
     for item in (seq $argv)
@@ -140,6 +155,16 @@ set PATH $PATH /home/warmdev/.local/bin
 # pip install
 alias ppm='~/venv/bin/pip'
 
+# yay
+alias yi='yay -Sy'
+alias yu='yay -R'
+
+# pacman
+alias pmi='sudo pacman -Sy'
+alias pmu='sudo pacman -R'
+
+alias monitor='v ~/dotfiles/hypr/conf/custom.conf'
+
 # Set up fzf key bindings
 fzf --fish | source
 function cdfzf
@@ -148,8 +173,3 @@ function cdfzf
         cd "$dir"
     end
 end
-alias fb="fzf --preview 'bat --style=numbers --color=always {}'"
-alias fbn="fzf --preview 'bat --style=numbers --color=always {}' | xargs -n 1 nvim"
-
-bind \co accept-autosuggestion
-bind \cq exit

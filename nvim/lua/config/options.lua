@@ -13,6 +13,7 @@ vim.o.shell = "/bin/fish"
 vim.o.cursorline = true
 vim.o.linespace = 200
 vim.o.clipboard = "unnamedplus"
+vim.o.smoothscroll = true
 
 -- Define the SetBackgroundColor function globally
 _G.SetBackgroundColor = function()

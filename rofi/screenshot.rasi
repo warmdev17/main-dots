@@ -1,0 +1,67 @@
+configuration{
+    modi: "drun";
+    icon-theme: "Papirus";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  Window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: false;
+}
+
+* {
+  bg-col: #24273a;
+  bg-col-light: #24273a;
+  border-col: #24273a;
+  selected-col: #24273a;
+  blue: #89b4fa;
+  fg-col: #cdd6f4;
+  fg-col2: #f38ba8;
+  grey: #6c7086;
+  mauve: #cba6f7;
+
+  width: 600;
+  font: "JetBrainsMono Nerd Font 14";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 200px;
+    border: 3px;
+    border-color: @border-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    margin: 0px 20px 0px 20px;
+    columns: 3;
+    lines: 1;
+    background-color: @bg-col;
+}
+element {
+    width: 40px;
+    height: 40px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+    border-radius: 3px;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color:  @mauve ;
+    text-color: @bg-col  ;
+    border-radius: 3px;
+}

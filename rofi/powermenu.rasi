@@ -11,7 +11,6 @@ configuration{
     display-run: "   Run ";
     display-window: " 﩯  Window";
     display-Network: " 󰤨  Network";
-    display-power-menu: " Power"
     sidebar-mode: false;
 }
 
